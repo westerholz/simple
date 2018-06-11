@@ -28,19 +28,21 @@ import persistence.User;
 
 public class LoginView extends VerticalLayout implements View{
 	public static final String viewName = "Login View";
+	private MyLifeUI ui;
   public LoginView( ) {
-	  TextField userName = new TextField("Username");
+	  ui = (MyLifeUI)UI.getCurrent();
+	  TextField userName = new TextField(ui.getLabelBundle().getString("username"));
 	  userName.setIcon(VaadinIcons.USER);
 	  userName.setRequiredIndicatorVisible(true);
 	  addComponent(userName);
 	  
-	  PasswordField passwordField = new PasswordField("Password");
+	  PasswordField passwordField = new PasswordField(ui.getLabelBundle().getString("password"));
 	  passwordField.setIcon(VaadinIcons.STAR);
 	  passwordField.setRequiredIndicatorVisible(true);
 	  addComponent(passwordField);
 	  
 	  
-	 Button loginButton = new Button("Login");
+	 Button loginButton = new Button(ui.getLabelBundle().getString("login"));
 	 loginButton.addClickListener(new ClickListener() {
 		 private static final long serialVersionUID = 1L;
 
@@ -68,22 +70,22 @@ public class LoginView extends VerticalLayout implements View{
 	  addComponent(loginButton);
 	  
 	  FormLayout registerContent = new FormLayout();
-	  TextField registerName = new TextField("Username");
+	  TextField registerName = new TextField(ui.getLabelBundle().getString("username"));
 	  registerName.setIcon(VaadinIcons.USER);
 	  registerName.setRequiredIndicatorVisible(true);
 	  registerContent.addComponent(registerName);
 	  
-	  PasswordField passwordFieldRegister = new PasswordField("Password");
+	  PasswordField passwordFieldRegister = new PasswordField(ui.getLabelBundle().getString("password"));
 	  passwordFieldRegister.setIcon(VaadinIcons.STAR);
 	  passwordFieldRegister.setRequiredIndicatorVisible(true);
 	  registerContent.addComponent(passwordFieldRegister);
 	  
-	  PasswordField passwordFieldRegister2 = new PasswordField("Password 2");
+	  PasswordField passwordFieldRegister2 = new PasswordField(ui.getLabelBundle().getString("password_repeat"));
 	  passwordFieldRegister2.setIcon(VaadinIcons.STAR);
 	  passwordFieldRegister2.setRequiredIndicatorVisible(true);
 	  registerContent.addComponent(passwordFieldRegister2);
 	  
-	  Button registerButton = new Button("Register");
+	  Button registerButton = new Button(ui.getLabelBundle().getString("register"));
 		 registerButton.addClickListener(new ClickListener() {
 			 private static final long serialVersionUID = 1L;
 
@@ -91,7 +93,7 @@ public class LoginView extends VerticalLayout implements View{
 			public void buttonClick(ClickEvent event) {
 				if(passwordFieldRegister.getValue().equals(passwordFieldRegister2.getValue())) {
 				
-			  EntityManager	em = ((MyLifeUI)UI.getCurrent()).getEntityManager(); //Persistence.createEntityManagerFactory("simple").createEntityManager(((MyLifeUI)UI.getCurrent()).getDbMap());
+			  EntityManager	em = ui.getEntityManager(); 
 			  User newUser = new User();
 			  newUser.setLoginName(registerName.getValue());
 			  Credentials credentials = new Credentials();
@@ -102,7 +104,6 @@ public class LoginView extends VerticalLayout implements View{
 			  String[] parts = hashResult.split(":");
 			  credentials.setIsActive(true);
 			  credentials.setHashedPassword(hashResult);
-			  //credentials.setSalt(parts[1]);
 			  newUser.setCredentials(credentials);
 			  em.getTransaction().begin();
 			  em.persist(newUser);
@@ -114,7 +115,7 @@ public class LoginView extends VerticalLayout implements View{
 				  
 			  }
 				}else {
-					Notification.show("Passwords do not match!");
+					Notification.show(ui.getMessageBundle().getString("password_missmatch"));
 				}
 			}
 		 });

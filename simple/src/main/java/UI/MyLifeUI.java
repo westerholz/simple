@@ -27,6 +27,7 @@ public class MyLifeUI extends UI{
 	private EntityManager em;
 	private MainScreen mainScreen;
 	private ResourceBundle labelBundle;
+	private ResourceBundle messageBundle;
 	public ResourceBundle getLabelBundle() {
 		return labelBundle;
 	}
@@ -35,6 +36,17 @@ public class MyLifeUI extends UI{
 	public void setLabelBundle(ResourceBundle labelBundle) {
 		this.labelBundle = labelBundle;
 	}
+	
+
+	public ResourceBundle getMessageBundle() {
+		return messageBundle;
+	}
+
+
+	public void setMessageBundle(ResourceBundle messageBundle) {
+		this.messageBundle = messageBundle;
+	}
+
 
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = MyLifeUI.class)
@@ -45,6 +57,9 @@ public class MyLifeUI extends UI{
 		Responsive.makeResponsive(this);
 		labelBundle = 
 	            ResourceBundle.getBundle("i18n.labels",
+	                                     VaadinSession.getCurrent().getLocale());
+		messageBundle = 
+	            ResourceBundle.getBundle("i18n.messages",
 	                                     VaadinSession.getCurrent().getLocale());
 		getPage().setTitle(labelBundle.getString("browserTitle"));
 		 
