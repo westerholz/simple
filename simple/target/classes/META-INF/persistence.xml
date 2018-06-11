@@ -18,8 +18,8 @@
 			<property name="hibernate.connection.driver_class"
 				value="com.mysql.jdbc.Driver"></property>
 			<!-- <property name="hibernate.connection.password" value=""></property> -->
-			<property name="hibernate.connection.url"
-				value="jdbc:mysql://62.108.32.152:3306/vnkjumbj_mylife"></property>
+			<property name=""
+				value=""></property>
 				<!--  <property name="hibernate.connection.url"
 				value="jdbc:mysql://localhost:3306/mylifeapp"></property>-->
 			<!-- <property name="hibernate.connection.username" value=""></property> -->

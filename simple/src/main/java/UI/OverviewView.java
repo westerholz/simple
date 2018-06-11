@@ -13,19 +13,16 @@ import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
-//import persistence.Document;
+
 
 public class OverviewView extends CssLayout implements View {
 	public static final String viewName = "Overview View";
-	//@PersistenceContext(unitName="simple")
 	private EntityManager em;
 	public static final String VIEW_NAME = "Overview";
 	public OverviewView() {
 		setSizeFull();
 		em = ((MyLifeUI)UI.getCurrent()).getEntityManager();
-		// em = Persistence.createEntityManagerFactory("simple").createEntityManager(((MyLifeUI)UI.getCurrent()).getDbMap());
-	  /*      Document d = em.find(Document.class, 'a3639429877c4a5aaf4683f3c5f9cc37');
-	  */      
+   
 		em.getTransaction().begin();
 		//em.persist(new Document());
 		em.getTransaction().commit();

@@ -15,6 +15,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.server.Sizeable;
+import com.vaadin.server.VaadinService;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.ui.Button;
@@ -64,6 +65,7 @@ public class MainScreen extends HorizontalLayout implements View {
 	}
 
 	protected void defineUnauthorizedMenu() {
+		Locale locale = VaadinService.getCurrentRequest().getLocale();
 		loginViewButton = HMButton.get().withIcon(VaadinIcons.USER).withCaption("Login").withNavigateTo(LoginView.class);
 		leftMenu.add(loginViewButton);
 		HMSubMenu memberList = leftMenu.add(HMSubMenu.get().withCaption("Member").withIcon(VaadinIcons.USERS));

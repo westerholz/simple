@@ -2,6 +2,7 @@ package UI;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
@@ -15,6 +16,7 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.Responsive;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.themes.ValoTheme;
 
@@ -24,6 +26,16 @@ public class MyLifeUI extends UI{
 	private Map<String,Object> dbMap;
 	private EntityManager em;
 	private MainScreen mainScreen;
+	private ResourceBundle labelBundle;
+	public ResourceBundle getLabelBundle() {
+		return labelBundle;
+	}
+
+
+	public void setLabelBundle(ResourceBundle labelBundle) {
+		this.labelBundle = labelBundle;
+	}
+
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = MyLifeUI.class)
 	public static class SimpleServlet extends VaadinServlet {		
@@ -31,17 +43,20 @@ public class MyLifeUI extends UI{
 	@Override
 	protected void init(VaadinRequest vaadinRequest) {
 		Responsive.makeResponsive(this);
-		setLocale(vaadinRequest.getLocale());
-		getPage().setTitle("MyLife in one Place!");
-		//Map<String, String> env = System.getenv("DB_USER");
+		labelBundle = 
+	            ResourceBundle.getBundle("i18n.labels",
+	                                     VaadinSession.getCurrent().getLocale());
+		getPage().setTitle(labelBundle.getString("browserTitle"));
+		 
+		        
+
 		dbMap = new HashMap<String, Object>();
-		//Persistence.createEntityManagerFactory("simple").
+
 		dbMap.put("hibernate.connection.password", System.getenv("DB_PW"));
 		dbMap.put("hibernate.connection.user", System.getenv("DB_USER"));
+		dbMap.put("hibernate.connection.url", System.getenv("DB_URL"));
 		em = Persistence.createEntityManagerFactory("simple", dbMap).createEntityManager();
-		//dbMap = Persistence.createEntityManagerFactory("simple").getProperties();
-		
-		//em = Persistence.createEntityManagerFactory("simple").createEntityManager();
+
 		setContent( new MainScreen(this) );
 	}
 	
