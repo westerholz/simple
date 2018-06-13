@@ -78,16 +78,11 @@ public class User extends PersistenceEntity {
 	}
 	public static User getUserByLoginName(String loginName) {
 	 em = ((MyLifeUI)UI.getCurrent()).getEntityManager();
-	
-			 //Persistence.createEntityManagerFactory("simple").createEntityManager(((MyLifeUI)UI.getCurrent()).getDbMap());
-	 User n = new User();
+
 	 TypedQuery<User> query = em.createNamedQuery("User.getByLoginName", User.class);
-	 TypedQuery<User> query2 = em.createNamedQuery("User.getByLoginName", (Class<User>) n.getClass());
 	 query.setParameter("loginName", loginName);
 	 return query.getSingleResult();
-	 
-	 
-	 // return	 em.createNamedQuery("User.getByLoginName", User.class).setParameter("loginName", loginName).getSingleResult();
+
 	  
 	}
 }

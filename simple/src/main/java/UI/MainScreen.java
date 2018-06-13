@@ -1,6 +1,10 @@
 package UI;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
@@ -51,13 +55,17 @@ public class MainScreen extends HorizontalLayout implements View {
 	private MyLifeUI ui;
 	private User loggedInUser;
 	private HMButton loginViewButton;
+	private ResourceBundle menuLabelsBundle;
+	private Map<String,HMSubMenu> leftSubMenues;
 
 	public MainScreen(MyLifeUI ui) {
 		//ApplicationContext context = new AnnotationConfigApplicationContext(); 
 		//context.
 		this.ui = ui;
 		initializeUI();
-		
+		leftSubMenues = new HashMap<String,HMSubMenu>();
+		menuLabelsBundle = ResourceBundle.getBundle("i18n.menuLabels",
+                VaadinSession.getCurrent().getLocale());
 		defineUnauthorizedMenu();
 		UI.getCurrent().getNavigator().setErrorView(ErrorView.class);
         setSizeFull();
@@ -65,10 +73,12 @@ public class MainScreen extends HorizontalLayout implements View {
 	}
 
 	protected void defineUnauthorizedMenu() {
-		Locale locale = VaadinService.getCurrentRequest().getLocale();
+		
 		loginViewButton = HMButton.get().withIcon(VaadinIcons.USER).withCaption("Login").withNavigateTo(LoginView.class);
 		leftMenu.add(loginViewButton);
+	    
 		HMSubMenu memberList = leftMenu.add(HMSubMenu.get().withCaption("Member").withIcon(VaadinIcons.USERS));
+		leftSubMenues.put("memberList", memberList);
 		memberList.add(
 				HMButton.get().withCaption("Settings").withIcon(VaadinIcons.COGS).withNavigateTo(LogoutView.class));
 	}
@@ -86,9 +96,16 @@ public class MainScreen extends HorizontalLayout implements View {
 		
 		// LeftMenu
 		leftMenu.remove(loginViewButton);
+		leftMenu.remove(leftSubMenues.get("memberList"));
 		HMButton overviewViewButton = HMButton.get().withCaption(OverviewView.VIEW_NAME).withIcon(VaadinIcons.HOME)
 				.withNavigateTo(OverviewView.class);
 		leftMenu.add(overviewViewButton);
+		
+		HMSubMenu accountsSubMenu = leftMenu.add(HMSubMenu.get().withCaption(menuLabelsBundle.getString("accountSubMenu")).withIcon(VaadinIcons.ACCORDION_MENU));
+		leftSubMenues.put("accounts", accountsSubMenu);
+		HMButton accountOverviewButton = HMButton.get().withCaption(menuLabelsBundle.getString("accountOverviewButton")).withIcon(VaadinIcons.BUILDING).withNavigateTo(AccountOverviewView.class);
+		accountsSubMenu.add(accountOverviewButton);
+		
 
 		// TopMenu
 		HMLabel userLabel = HMLabel.get().withIcon(VaadinIcons.USER);

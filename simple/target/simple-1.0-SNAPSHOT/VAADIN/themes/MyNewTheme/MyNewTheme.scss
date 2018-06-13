@@ -27,10 +27,21 @@
 // For more information, see: https://vaadin.com/book/-/page/themes.valo.html
 // Example variants can be copy/pasted from https://vaadin.com/wiki/-/wiki/Main/Valo+Examples
 
+
+
 @import "../valo/valo.scss";
 
 @mixin MyNewTheme {
   @include valo;
-
+  // .v-grid-row-background: hsl(216, 69%, 41%);
   // Insert your own theme rules here
+  .v-grid-cell{
+    text-align: right;
+}
+  .v-grid{
+   background-color: red;
+   }
+    .v-grid-cell.kai{
+   background-color: red;
+   }
 }
