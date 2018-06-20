@@ -36,12 +36,39 @@
   // .v-grid-row-background: hsl(216, 69%, 41%);
   // Insert your own theme rules here
   .v-grid-cell{
-    text-align: right;
+    text-align: left;
+    color: #000000 ;
+   // background-color: white;   
+    td{
+    	color: yellow;
+    	}
 }
-  .v-grid{
-   background-color: red;
-   }
-    .v-grid-cell.kai{
+
+
+.v-grid {
+  .v-grid-scroller, .v-grid-scroller-horizontal { }
+  .v-grid-tablewrapper {
+    .v-grid-header {
+      .v-grid-row {
+        .v-grid-cell, .frozen, .v-grid-cell-focused {
+        background-color: red; }
+      }
+    }
+    .v-grid-body {
+      .v-grid-row,
+      .v-grid-row-stripe
+      {
+      	background-color: red;
+      	},
+      .v-grid-row-has-data {
+        .v-grid-cell, .frozen, .v-grid-cell-focused { background-color: yellow;
+        	color:yellow;
+        }
+      }
+    }
+
+}
+    .v-grid-row.kai{
    background-color: red;
    }
 }

@@ -15463,13 +15463,22 @@ div.v-layout.v-horizontal.v-widget {
 }
 
 .MyNewTheme .v-grid-cell {
-	text-align: right;
+	text-align: left;
+	color: #000000;
 }
 
-.MyNewTheme .v-grid {
+.MyNewTheme .v-grid-cell td {
+	color: yellow;
+}
+
+.MyNewTheme .v-grid .v-grid-tablewrapper .v-grid-header .v-grid-row .v-grid-cell, .MyNewTheme .v-grid .v-grid-tablewrapper .v-grid-header .v-grid-row .frozen, .MyNewTheme .v-grid .v-grid-tablewrapper .v-grid-header .v-grid-row .v-grid-cell-focused {
 	background-color: red;
 }
 
-.MyNewTheme .v-grid-cell.kai {
+.MyNewTheme .v-grid .v-grid-tablewrapper .v-grid-body .v-grid-row, .MyNewTheme .v-grid .v-grid-tablewrapper .v-grid-body .v-grid-row-stripe {
+	background-color: red;
+}
+
+.MyNewTheme .v-grid-row.kai {
 	background-color: red;
 }

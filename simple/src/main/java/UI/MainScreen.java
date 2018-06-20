@@ -139,7 +139,7 @@ public class MainScreen extends HorizontalLayout implements View {
 		leftMenu = null;
 		topMenu = null;
 		hybridMenu = HybridMenu.get().withNaviContent(new VerticalLayout())
-				.withConfig(MenuConfig.get().withDesignItem(DesignItem.getDarkDesign())).build();
+				.withConfig(MenuConfig.get().withDesignItem(DesignItem.getWhiteDesign())).build();
 		leftMenu = hybridMenu.getLeftMenu();
 		topMenu = hybridMenu.getTopMenu();
 		leftMenu.add(HMLabel.get().withCaption("<b>MyLife</b> Menu")).withIcon(VaadinIcons.BAR_CHART);

@@ -31,16 +31,15 @@ public class AccountOverviewView extends VerticalLayout implements View {
 		ui = (MyLifeUI)UI.getCurrent();
 		em = ui.getEntityManager();
 		accountGrid = new Grid<Account>();
-		em.getTransaction().begin();
+		//em.getTransaction().begin();
 		//em.persist(new Document());
 		//em.persist(new Account(AccountType.ASSET_ACTIVE));
-		em.getTransaction().commit();
-		accountGrid.setSizeFull();
-		accountGrid.addStyleName("Kai");
+		//em.getTransaction().commit();
+		//accountGrid.setSizeFull();
+		//accountGrid.addStyleName("Kai");
 		accountGrid.setItems(Account.getAllAccounts());
-		accountGrid.addColumn(Account::getAccountType).setCaption("AccountType");
-		accountGrid.setStyleGenerator(cellRef -> { return "kai";});
-
+		accountGrid.addColumn(Account::getShortID).setCaption(ui.getLabelBundle().getString("accountid"));
+		accountGrid.addColumn(Account::getAccountType).setCaption(ui.getLabelBundle().getString("accounttype"));
     
     layout.addComponent(accountGrid);
     addComponent(layout);

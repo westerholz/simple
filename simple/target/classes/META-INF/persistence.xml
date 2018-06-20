@@ -8,11 +8,13 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!--  <provider>org.hibernate.ejb.HibernatePersistence</provider>-->
 		<class>persistence.Account</class>
+		<class>persistence.AccountItem</class>
 		<class>persistence.Asset</class>
 		<class>persistence.Attachment</class>
 		<class>persistence.Credentials</class>
 		<class>persistence.PersistenceEntity</class>
 		<class>persistence.Posting</class>
+		<class>persistence.Purchase</class>
 		<class>persistence.User</class>
 		<properties>
 			<property name="hibernate.connection.driver_class"
