@@ -15461,15 +15461,3 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
-
-.MyNewTheme .v-grid-cell {
-	text-align: right;
-}
-
-.MyNewTheme .v-grid {
-	background-color: red;
-}
-
-.MyNewTheme .v-grid-cell.kai {
-	background-color: red;
-}

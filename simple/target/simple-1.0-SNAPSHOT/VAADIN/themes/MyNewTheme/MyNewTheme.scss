@@ -32,16 +32,7 @@
 @import "../valo/valo.scss";
 
 @mixin MyNewTheme {
-  @include valo;
+  @include valo;	
   // .v-grid-row-background: hsl(216, 69%, 41%);
-  // Insert your own theme rules here
-  .v-grid-cell{
-    text-align: right;
-}
-  .v-grid{
-   background-color: red;
-   }
-    .v-grid-cell.kai{
-   background-color: red;
-   }
+
 }

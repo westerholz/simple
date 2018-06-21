@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.annotation.WebServlet;
 
@@ -18,11 +17,14 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.themes.ValoTheme;
 
 @Theme("MyNewTheme")
 @PreserveOnRefresh
 public class MyLifeUI extends UI{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Map<String,Object> dbMap;
 	private EntityManager em;
 	private MainScreen mainScreen;
@@ -50,7 +52,12 @@ public class MyLifeUI extends UI{
 
 	@WebServlet(value = "/*", asyncSupported = true)
 	@VaadinServletConfiguration(productionMode = false, ui = MyLifeUI.class)
-	public static class SimpleServlet extends VaadinServlet {		
+	public static class SimpleServlet extends VaadinServlet {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;		
 	}
 	@Override
 	protected void init(VaadinRequest vaadinRequest) {

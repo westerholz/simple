@@ -6,9 +6,10 @@
 	<persistence-unit name="simple" >
 		<description>org.hibernate.jpa.HibernatePersistenceProviderorg.hibernate.ejb.HibernatePersistence</description>
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<!--  <provider>org.hibernate.ejb.HibernatePersistence</provider>-->
 		<class>persistence.Account</class>
-		<class>persistence.AccountItem</class>
+		<class>persistence.AccountBank</class>
+		<class>persistence.AccountDepot</class>
+		<class>persistence.AccountDepotItem</class>
 		<class>persistence.Asset</class>
 		<class>persistence.Attachment</class>
 		<class>persistence.Credentials</class>
@@ -16,6 +17,7 @@
 		<class>persistence.Posting</class>
 		<class>persistence.Purchase</class>
 		<class>persistence.User</class>
+		<!--  <provider>org.hibernate.ejb.HibernatePersistence</provider>-->
 		<properties>
 			<property name="hibernate.connection.driver_class"
 				value="com.mysql.jdbc.Driver"></property>
@@ -25,7 +27,7 @@
 				<!--  <property name="hibernate.connection.url"
 				value="jdbc:mysql://localhost:3306/mylifeapp"></property>-->
 			<!-- <property name="hibernate.connection.username" value=""></property> -->
-			<property name="hibernate.default_schema" value="mylifeapp"></property>
+			<!--<property name="hibernate.default_schema" value="mylifeapp"></property>-->
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL5Dialect"></property>
 			<property name="hibernate.hbm2ddl.auto" value="update" />

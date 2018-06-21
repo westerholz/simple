@@ -5,9 +5,10 @@ C:\Users\kwest\git\simple\simple\src\main\java\UI\ErrorView.java
 C:\Users\kwest\git\simple\simple\src\main\java\persistence\Asset.java
 C:\Users\kwest\git\simple\simple\src\main\java\persistence\Posting.java
 C:\Users\kwest\git\simple\simple\src\main\java\UI\LoginView.java
-C:\Users\kwest\git\simple\simple\src\main\java\persistence\Coloumn.java
 C:\Users\kwest\git\simple\simple\src\main\java\UI\LogoutView.java
+C:\Users\kwest\git\simple\simple\src\main\java\persistence\AccountDepotItem.java
 C:\Users\kwest\git\simple\simple\src\main\java\UI\MainScreen.java
+C:\Users\kwest\git\simple\simple\src\main\java\persistence\AccountDepot.java
 C:\Users\kwest\git\simple\simple\src\main\java\persistence\User.java
 C:\Users\kwest\git\simple\simple\src\main\java\persistence\Account.java
 C:\Users\kwest\git\simple\simple\src\main\java\controller\LoginValidation.java
@@ -16,3 +17,5 @@ C:\Users\kwest\git\simple\simple\src\main\java\persistence\AccountType.java
 C:\Users\kwest\git\simple\simple\src\main\java\persistence\Credentials.java
 C:\Users\kwest\git\simple\simple\src\main\java\UI\AccountOverviewView.java
 C:\Users\kwest\git\simple\simple\src\main\java\UI\OverviewView.java
+C:\Users\kwest\git\simple\simple\src\main\java\persistence\AccountBank.java
+C:\Users\kwest\git\simple\simple\src\main\java\persistence\Purchase.java
